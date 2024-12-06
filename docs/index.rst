@@ -1,19 +1,8 @@
 Welcome to the Your Project Name's Documentation!
 =================================================
 
-Contents:
 
-.. toctree::
-   :maxdepth: 2
+Welcome to the Your Project Name's Documentation!
+=================================================
 
-   introduction
-   installation
-   usage
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. mdinclude:: ../README.md

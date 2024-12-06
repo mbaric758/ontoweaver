@@ -11,27 +11,17 @@ version = '0.1.1'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
+    'recommonmark',  # Add recommonmark to use Markdown
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
+    'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
+    'sphinx.ext.todo',
+    'sphinx.ext.intersphinx',
 ]
 
 templates_path = ['_templates']
-
-source_suffix = {
-    '.rst': 'restructuredtext',
-    '.txt': 'markdown',
-    '.md': 'markdown',
-}
-
-master_doc = 'index'  # Read the Docs requires this to be explicitly set
-
+source_suffix = ['.rst', '.md']  # Include Markdown files
+master_doc = 'index'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for internationalization ----------------------------------------
