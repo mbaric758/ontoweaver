@@ -22,5 +22,4 @@ python:
     - method: pip
       path: .
       extra_requirements:
-        - sphinx_rtd_theme  # This may be removed if you are using the furo theme
         - furo
