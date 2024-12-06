@@ -13,5 +13,5 @@ Contents:
    :maxdepth: 2
    :caption: Table of Contents:
 
-   ontoweaver
+   OntoWeaver
    modules

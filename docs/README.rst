@@ -11,7 +11,7 @@ OntoWeaver allows writing a simple declarative mapping to express how
 columns from a `Pandas <https://pandas.pydata.org/>`__ table are to be
 converted as typed nodes or edges in an SKG.
 
-.. image:: docs/OntoWeaver_logo__big.svg
+.. image:: OntoWeaver_logo__big.svg
 
 It provides a simple layer of abstraction on top of
 `Biocypher <https://biocypher.org>`__, which remains responsible for
