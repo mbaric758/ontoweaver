@@ -3,8 +3,8 @@ OntoWeaver Documentation
 
 Welcome to the OntoWeaver project documentation!
 
-.. include:: ../../../README.rst
-.. image:: ../../../docs/OntoWeaver_logo__big.svg
+.. include:: ../README.md
+.. image:: OntoWeaver_logo__big.svg
    :alt: OntoWeaver Logo
 
 Contents:
