@@ -1,46 +1,35 @@
-# -- Path setup --------------------------------------------------------------
-import os
-import sys
-sys.path.insert(0, os.path.abspath('.'))
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
 project = 'OntoWeaver'
 author = 'Johann Dreo, Marko Baric, Claire Laudy, Matthieu Najm, Benno Schwikowski'
-release = '0.1'
-version = '0.1.1'
+release = '2024'
 
 # -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+import os
+import sys
+sys.path.insert(0, os.path.abspath('/Users/mbaric/package_ontoweaver/src/'))
+
 extensions = [
-    'sphinx.ext.autodoc',  # Include documentation from docstrings
-    'sphinx.ext.napoleon',  # Support for Google-style docstrings
-    'sphinx.ext.viewcode',  # Add links to highlighted source code
-    'sphinx.ext.todo',      # Support for todo items
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
 ]
 
+autoclass_content = 'both'
+
 templates_path = ['_templates']
-source_suffix = '.rst'  # Only use RestructuredText
-master_doc = 'index'
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
+
+
 
 # -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-# The theme to use for HTML. "alabaster" is the Sphinx default theme.
-html_theme = 'alabaster'
-
-# Theme-specific options
-html_theme_options = {
-    # You can add theme-specific options here
-}
-
+html_theme = "furo"
 html_static_path = ['_static']
-
-# -- Read the Docs configuration ---------------------------------------------
-on_rtd = os.environ.get('READTHEDOCS') == 'True'
-
-# If you need the LaTeX output to work on Read the Docs, uncomment below:
-# latex_engine = 'xelatex'
-
-# -- Extension configuration -------------------------------------------------
-
-# -- Options for todo extension ----------------------------------------------
-todo_include_todos = True

@@ -1,8 +1,17 @@
-Welcome to the Your Project Name's Documentation!
-=================================================
+OntoWeaver Documentation
+========================
 
+Welcome to the OntoWeaver project documentation!
 
-Welcome to the Your Project Name's Documentation!
-=================================================
+.. include:: ../../../README.rst
+.. image:: ../../../docs/OntoWeaver_logo__big.svg
+   :alt: OntoWeaver Logo
 
-.. mdinclude:: ../README.md
+Contents:
+---------
+.. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents:
+
+   ontoweaver
+   modules
