@@ -1,15 +1,7 @@
-tools.preprocessing module
-----------------------
-
-.. automodule:: tools.preprocessing
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
+Preprocessing tools
 ---------------
 
-.. automodule:: tools
+.. automodule:: preprocessing
    :members:
    :undoc-members:
    :show-inheritance:
