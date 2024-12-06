@@ -1,6 +1,3 @@
-ontoweaver
-==========
-
 .. toctree::
    :maxdepth: 4
 
