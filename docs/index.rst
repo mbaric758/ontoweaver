@@ -13,5 +13,6 @@ Contents:
    :maxdepth: 2
    :caption: Table of Contents:
 
-   OntoWeaver
+   ontoweaver
+   tools
    modules
