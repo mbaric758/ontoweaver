@@ -1,10 +1,7 @@
-ontoweaver package
-==================
-
 Submodules
 ----------
 
-ontoweaver.__init__ module
+init
 ----------------------
 
 .. automodule:: ontoweaver.__init__
@@ -12,7 +9,7 @@ ontoweaver.__init__ module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.base module
+base
 ----------------------
 
 .. automodule:: ontoweaver.base
@@ -20,7 +17,7 @@ ontoweaver.base module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.congregate module
+congregate
 ----------------------
 
 .. automodule:: ontoweaver.congregate
@@ -28,7 +25,7 @@ ontoweaver.congregate module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.fuse module
+fuse
 ----------------------
 
 .. automodule:: ontoweaver.fuse
@@ -36,7 +33,7 @@ ontoweaver.fuse module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.fusion module
+fusion
 ----------------------
 
 .. automodule:: ontoweaver.fusion
@@ -44,7 +41,7 @@ ontoweaver.fusion module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.merge module
+merge
 ----------------------
 
 .. automodule:: ontoweaver.merge
@@ -52,7 +49,7 @@ ontoweaver.merge module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.serialize module
+serialize
 ----------------------
 
 .. automodule:: ontoweaver.serialize
@@ -60,7 +57,7 @@ ontoweaver.serialize module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.tabular module
+tabular
 -------------------------
 
 .. automodule:: ontoweaver.tabular
@@ -68,7 +65,7 @@ ontoweaver.tabular module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.transformer module
+transformer
 -----------------------------
 
 .. automodule:: ontoweaver.transformer
@@ -76,7 +73,7 @@ ontoweaver.transformer module
    :undoc-members:
    :show-inheritance:
 
-ontoweaver.types module
+types
 -----------------------
 
 .. automodule:: ontoweaver.types
@@ -84,10 +81,3 @@ ontoweaver.types module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: ontoweaver
-   :members:
-   :undoc-members:
-   :show-inheritance:
