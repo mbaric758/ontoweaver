@@ -5,4 +5,5 @@ Preprocessing tools
    :toctree: _autosummary
    :recursive:
 
+    tools
     tools.preprocessing

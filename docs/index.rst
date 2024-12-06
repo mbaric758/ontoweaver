@@ -10,9 +10,9 @@ Welcome to the OntoWeaver project documentation!
 Contents:
 ---------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Table of Contents:
 
+   modules
    ontoweaver
    tools
-   modules
