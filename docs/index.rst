@@ -4,7 +4,7 @@ OntoWeaver Documentation
 Welcome to the OntoWeaver project documentation!
 
 .. include:: ../README.md
-.. image:: OntoWeaver_logo__big.svg
+.. image:: ./OntoWeaverLogo_logo__big.svg
    :alt: OntoWeaver Logo
 
 Contents:

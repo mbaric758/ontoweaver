@@ -17,10 +17,5 @@ sphinx:
 # Specify the Furo theme as a requirement to be installed
 python:
   install:
-    # requirements: docs/requirements.txt
-    # Or specify the packages to be installed directly
-    - method: pip
-      path: .
-      extra_requirements:
-        - sphinx_rtd_theme
-        - furo
+    - requirements: ./docs/requirements.txt
+    
