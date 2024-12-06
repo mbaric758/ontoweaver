@@ -17,3 +17,13 @@ sphinx:
   # builder: "dirhtml"
   # Fail on all warnings to avoid broken references
   fail_on_warning: true
+
+# Set Python version, install your docs requirements
+python:
+  version: "3.12"
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - sphinx_rtd_theme
+        - myst-parser  # Replace with recommonmark if using Sphinx < 3.0

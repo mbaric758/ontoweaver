@@ -1,7 +1,7 @@
 # -- Path setup --------------------------------------------------------------
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))  # or the path to your package
+sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 project = 'OntoWeaver'
@@ -11,7 +11,7 @@ version = '0.1.1'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
-    'recommonmark',  # Add recommonmark to use Markdown
+    'myst_parser',  # For markdown support with Sphinx 3.0+
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
@@ -24,11 +24,8 @@ source_suffix = ['.rst', '.md']  # Include Markdown files
 master_doc = 'index'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-# -- Options for internationalization ----------------------------------------
-language = None
-
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'  # or any other theme you want
+html_theme = 'sphinx_rtd_theme'  # Use Read the Docs theme
 html_static_path = ['_static']
 
 # -- Extension configuration -------------------------------------------------
@@ -42,23 +39,14 @@ latex_elements = {
     'figure_align': 'htbp'
 }
 
-# -- Setup for Read the Docs (RTD) ------------------------------------------
-# on_rtd is whether we are on readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS') == 'True'
-
-if on_rtd:
-    html_theme = 'default'
-else:
-    html_theme = 'sphinx_rtd_theme'
-
-# This is to make sure that Read the Docs builds PDFs using your LaTeX settings
-latex_engine = 'xelatex'  # or 'pdflatex', 'lualatex', etc
-
 # -- Options for intersphinx -------------------------------------------------
-# This configures intersphinx, which links to other projects' documentation
 intersphinx_mapping = {'python': ('https://docs.python.org/3/', None)}
 
 # -- Options for todo extension ----------------------------------------------
-# If you have any :todo:`some task` in your documentation, they can be shown
-# if you set this
 todo_include_todos = True
+
+# -- Options for Read the Docs PDF generation --------------------------------
+latex_engine = 'xelatex'  # Use XeLaTeX for better Unicode support
+
+# -- Read the Docs configuration ---------------------------------------------
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
