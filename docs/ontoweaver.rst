@@ -1,7 +1,10 @@
 OntoWeaver modules
 ---------------
+.. autosummary::
+   :toctree: _autosummary
+   :template: autosummary/module.rst
+   :recursive:
 
-.. automodule:: ontoweaver
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    ontoweaver.__init__
+    ontoweaver.base
+    ontoweaver.tabular
