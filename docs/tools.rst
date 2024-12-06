@@ -5,3 +5,11 @@ tools.preprocessing module
    :members:
    :undoc-members:
    :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tools
+   :members:
+   :undoc-members:
+   :show-inheritance:

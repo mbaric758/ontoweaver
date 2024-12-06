@@ -81,3 +81,10 @@ types
    :undoc-members:
    :show-inheritance:
 
+Module contents
+---------------
+
+.. automodule:: ontoweaver
+   :members:
+   :undoc-members:
+   :show-inheritance:
