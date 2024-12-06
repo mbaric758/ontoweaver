@@ -23,18 +23,24 @@ master_doc = 'index'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'  # Use the Read the Docs theme
-html_static_path = ['_static']
 
-# -- Extension configuration -------------------------------------------------
+# The theme to use for HTML. "alabaster" is the Sphinx default theme.
+html_theme = 'alabaster'
 
-# -- Options for LaTeX output ------------------------------------------------
-latex_elements = {
-    'papersize': 'letterpaper',
-    'pointsize': '10pt',
-    'preamble': '',
-    'figure_align': 'htbp'
+# Theme-specific options
+html_theme_options = {
+    # You can add theme-specific options here
 }
+
+html_static_path = ['_static']
 
 # -- Read the Docs configuration ---------------------------------------------
 on_rtd = os.environ.get('READTHEDOCS') == 'True'
+
+# If you need the LaTeX output to work on Read the Docs, uncomment below:
+# latex_engine = 'xelatex'
+
+# -- Extension configuration -------------------------------------------------
+
+# -- Options for todo extension ----------------------------------------------
+todo_include_todos = True
