@@ -2,7 +2,7 @@ ontoweaver
 ==========
 
 .. toctree::
-   :maxdepth: 15
+   :maxdepth: 4
 
-   OntoWeaver
+   ontoweaver
     tools
