@@ -20,7 +20,6 @@ sphinx:
 
 # Set Python version, install your docs requirements
 python:
-  version: "3.12"
   install:
     - method: pip
       path: .
