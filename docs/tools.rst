@@ -1,7 +1,8 @@
 Preprocessing tools
 ---------------
 
-.. automodule:: preprocessing
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. autosummary::
+   :toctree: _autosummary
+   :recursive:
+
+    tools.preprocessing
