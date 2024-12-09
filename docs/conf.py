@@ -14,10 +14,7 @@ release = '2024'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 import os
 import sys
-current_dir = os.path.abspath(os.path.dirname(__file__))
-parent_dir = os.path.dirname(current_dir)
-ontoweaver_path = os.path.join(parent_dir, 'src')
-sys.path.insert(0, ontoweaver_path)
+sys.path.insert(0, os.path.abspath('../src/'))
 
 extensions = [
     'sphinx.ext.autodoc',
