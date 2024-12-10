@@ -14,7 +14,7 @@ release = '2024'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../src/ontoweaver/__init__.py'))
+sys.path.insert(0, os.path.abspath('/Users/mbaric/ontoweaver/src/'))
 
 extensions = [
     'sphinx.ext.autodoc',
