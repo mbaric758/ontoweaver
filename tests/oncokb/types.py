@@ -1,5 +1,6 @@
 import sys
-import ontoweaver
+from docs import ontoweaver
+
 
 class sample(ontoweaver.Node):
     @staticmethod

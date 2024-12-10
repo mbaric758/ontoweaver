@@ -1,6 +1,7 @@
 import logging
 
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_fuse():
     nodes = [
@@ -12,17 +13,17 @@ def test_fuse():
     ]
 
     on_ID = ontoweaver.serialize.ID()
-    congregater = ontoweaver.congregate.Nodes(on_ID)
+    congregater = docs.ontoweaver.congregate.Nodes(on_ID)
     congregater(nodes)
 
-    as_keys  = ontoweaver.merge.string.UseKey()
-    as_first = ontoweaver.merge.string.UseFirst()
-    in_lists = ontoweaver.merge.dictry.Append()
-    fuser = ontoweaver.fuse.Members(ontoweaver.base.Node,
-            merge_ID    = as_keys,
-            merge_label = as_first,
-            merge_prop  = in_lists,
-        )
+    as_keys  = docs.ontoweaver.merge.string.UseKey()
+    as_first = docs.ontoweaver.merge.string.UseFirst()
+    in_lists = docs.ontoweaver.merge.dictry.Append()
+    fuser = docs.ontoweaver.fuse.Members(docs.ontoweaver.base.Node,
+                                         merge_ID    = as_keys,
+                                         merge_label = as_first,
+                                         merge_prop  = in_lists,
+                                         )
 
     fusioner = ontoweaver.fusion.Reduce(fuser)
     fusioned = fusioner(congregater)
@@ -39,13 +40,13 @@ def test_fuse():
 
     assert(len(fuser.ID_mapping) == 0) # Only self-mappings.
 
-    as_sets = ontoweaver.merge.string.OrderedSet(".")
-    in_lists2 = ontoweaver.merge.dictry.Append(";")
-    fuser2 = ontoweaver.fuse.Members(ontoweaver.base.Node,
-            merge_ID    = as_keys,
-            merge_label = as_sets,
-            merge_prop  = in_lists2,
-        )
+    as_sets = docs.ontoweaver.merge.string.OrderedSet(".")
+    in_lists2 = docs.ontoweaver.merge.dictry.Append(";")
+    fuser2 = docs.ontoweaver.fuse.Members(docs.ontoweaver.base.Node,
+                                          merge_ID    = as_keys,
+                                          merge_label = as_sets,
+                                          merge_prop  = in_lists2,
+                                          )
 
     fusioner2 = ontoweaver.fusion.Reduce(fuser2)
     fusioned2 = fusioner2(congregater)

@@ -1,5 +1,4 @@
 import logging
-from abc import ABCMeta, abstractmethod
 
 from . import base
 from . import merge
@@ -37,12 +36,12 @@ class Members(Fuser):
 
     class Mergers:
         def __init__(self,
-             merge_ID    : merge.string.StringMerger = merge.string.UseKey(),
-             merge_label : merge.string.StringMerger = merge.string.UseKey(),
-             merge_prop  : merge.dictry.DictryMerger = merge.dictry.Append(),
-             merge_source: merge.string.StringMerger = merge.string.OrderedSet(),
-             merge_target: merge.string.StringMerger = merge.string.OrderedSet()
-        ):
+                     merge_ID    : merge.string.StringMerger = merge.string.UseKey(),
+                     merge_label : merge.string.StringMerger = merge.string.UseKey(),
+                     merge_prop  : merge.dictry.DictryMerger = merge.dictry.Append(),
+                     merge_source: merge.string.StringMerger = merge.string.OrderedSet(),
+                     merge_target: merge.string.StringMerger = merge.string.OrderedSet()
+                     ):
             self.ID = merge_ID
             self.label = merge_label
             self.prop = merge_prop
@@ -119,7 +118,7 @@ class Members(Fuser):
     def merge(self, key, lhs: base.Element, rhs: base.Element):
         assert(issubclass(type(lhs), base.Node) and issubclass(type(rhs), base.Node)
                or
-               issubclass(type(lhs), base.Edge) and issubclass(type(rhs), base.Edge) )
+               issubclass(type(lhs), base.Edge) and issubclass(type(rhs), base.Edge))
 
         self._ID_seen.add(lhs.id)
         self._ID_seen.add(rhs.id)

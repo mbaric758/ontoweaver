@@ -1,14 +1,15 @@
 import sys
-import ontoweaver
+from docs import ontoweaver
+
 
 class sample_to_patient(ontoweaver.Edge):
     @staticmethod
     def source_type():
-        return ontoweaver.types.sample
+        return docs.ontoweaver.types.sample
 
     @staticmethod
     def target_type():
-        return ontoweaver.types.patient
+        return docs.ontoweaver.types.patient
 
     @staticmethod
     def fields():

@@ -1,6 +1,7 @@
 import logging
 
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_reconciliate():
     nodes = [

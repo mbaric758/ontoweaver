@@ -1,6 +1,5 @@
 import logging
 from abc import abstractmethod, ABCMeta
-from typing import Optional
 
 from . import base
 from . import fuse
@@ -136,10 +135,10 @@ def reconciliate_nodes(nodes, separator = None):
     identicals = merge.string.EnsureIdentical()
     in_lists   = merge.dictry.Append(separator)
     node_fuser = fuse.Members(base.Node,
-            merge_ID    = use_key,
-            merge_label = identicals,
-            merge_prop  = in_lists,
-        )
+                              merge_ID    = use_key,
+                              merge_label = identicals,
+                              merge_prop  = in_lists,
+                              )
 
     nodes_fusioner = Reduce(node_fuser)
     fusioned_nodes = nodes_fusioner(nodes_congregater)
@@ -184,12 +183,12 @@ def reconciliate_edges(edges, separator = None):
     use_last_source = merge.string.UseLast()
     use_last_target = merge.string.UseLast()
     edge_fuser = fuse.Members(base.GenericEdge,
-            merge_ID     = set_of_ID,
-            merge_label  = identicals,
-            merge_prop   = in_lists,
-            merge_source = use_last_source,
-            merge_target = use_last_target
-        )
+                              merge_ID     = set_of_ID,
+                              merge_label  = identicals,
+                              merge_prop   = in_lists,
+                              merge_source = use_last_source,
+                              merge_target = use_last_target
+                              )
 
     edges_fusioner = Reduce(edge_fuser)
     fusioned_edges = edges_fusioner(edges_congregater)

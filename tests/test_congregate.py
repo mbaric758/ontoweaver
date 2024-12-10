@@ -1,4 +1,5 @@
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_congregate():
     nodes = [
@@ -14,22 +15,22 @@ def test_congregate():
 
     on_ID = ontoweaver.serialize.ID()
 
-    congregate_nodes = ontoweaver.congregate.Nodes(on_ID)
+    congregate_nodes = docs.ontoweaver.congregate.Nodes(on_ID)
     congregate_nodes(nodes)
     assert(len(congregate_nodes.duplicates) == 2)
 
-    congregate_edges = ontoweaver.congregate.Edges(on_ID)
+    congregate_edges = docs.ontoweaver.congregate.Edges(on_ID)
     congregate_edges(edges)
     assert(len(congregate_edges.duplicates) == 1)
 
 
     on_Everything = ontoweaver.serialize.All()
 
-    congregate_nodes = ontoweaver.congregate.Nodes(on_Everything)
+    congregate_nodes = docs.ontoweaver.congregate.Nodes(on_Everything)
     congregate_nodes(nodes)
     assert(len(congregate_nodes.duplicates) == 3)
 
-    congregate_edges = ontoweaver.congregate.Edges(on_Everything)
+    congregate_edges = docs.ontoweaver.congregate.Edges(on_Everything)
     congregate_edges(edges)
     assert(len(congregate_edges.duplicates) == 1)
 

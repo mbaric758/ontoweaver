@@ -1,15 +1,16 @@
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_serialize():
     node = ("Source:1", "Source", {"p1":"z"})
 
     edge = ("Link:0", "Source:1", "Target:2", "Link", {})
 
-    class Source(ontoweaver.base.Node):
+    class Source(docs.ontoweaver.base.Node):
         pass
-    class Target(ontoweaver.base.Node):
+    class Target(docs.ontoweaver.base.Node):
         pass
-    class Link(ontoweaver.base.Edge):
+    class Link(docs.ontoweaver.base.Edge):
         @staticmethod
         def source_type():
             return Source

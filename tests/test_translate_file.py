@@ -2,7 +2,8 @@ import logging
 import yaml
 import pandas as pd
 
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_translate_file():
 

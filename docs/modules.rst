@@ -2,4 +2,3 @@
    :maxdepth: 4
 
    ontoweaver
-   tools

@@ -1,13 +1,9 @@
-import logging
-
-import ontoweaver
-
 def test_append():
 
     sep = ";"
-    merge = ontoweaver.merge.dictry.Append(sep)
+    merge = docs.ontoweaver.merge.dictry.Append(sep)
 
-    k = ontoweaver.base.Node()
+    k = docs.ontoweaver.base.Node()
 
     merge(k, {"p1":"x"},{"p2":"y"} )
     assert( merge.get() == {"p1":"x", "p2":"y"} )

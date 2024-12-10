@@ -3,7 +3,8 @@ import yaml
 import io
 import pandas as pd
 
-import ontoweaver
+from docs import ontoweaver
+
 
 def test_transformer_string():
 

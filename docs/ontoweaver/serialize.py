@@ -1,4 +1,4 @@
-from abc import ABCMeta as ABSTRACT, ABCMeta, abstractmethod
+from abc import ABCMeta as ABSTRACT, abstractmethod
 
 from . import base
 

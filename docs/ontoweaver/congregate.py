@@ -1,5 +1,5 @@
 import logging
-from abc import ABCMeta as ABSTRACT, ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 from . import base
 from . import serialize
