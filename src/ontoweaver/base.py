@@ -1,4 +1,5 @@
 import logging
+import re
 from collections.abc import Iterable, Generator
 from abc import ABCMeta as ABSTRACT, ABCMeta, abstractmethod
 from abc import abstractmethod as abstract
@@ -400,7 +401,7 @@ class Adapter(ErrorManager, metaclass = ABSTRACT):
 class Transformer(ErrorManager):
     """"Class used to manipulate cell values and return them in the correct format."""""
 
-    def __init__(self, target, properties_of, edge = None, columns = None, output_validator: validate.OutputValidator() = None, **kwargs):
+    def __init__(self, target, properties_of, edge = None, columns = None, output_validator: validate.OutputValidator() = None, multy_type_branching = None, **kwargs):
         """
         Instantiate transformers.
 
@@ -420,6 +421,7 @@ class Transformer(ErrorManager):
         self.columns = columns
         self.output_validator = output_validator
         self.parameters = kwargs
+        self.multy_type_branching = multy_type_branching
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -514,6 +516,25 @@ class Transformer(ErrorManager):
             msg = f"Transformer {self.__repr__()} did not produce valid data {error}."
             self.error(msg, exception = exceptions.DataValidationError)
             return False
+
+    def branch(self, branching_dict, item):
+
+        for key, value in branching_dict.items():
+            if isinstance(key, str):
+                try:
+                    if re.match(key, item):
+                        p = branching_dict.get(value["to_object"].__name__, {})
+                        self.properties_of = p
+                        return value["via_relation"], value["to_object"]
+                except re.error:
+                    pass
+            elif key == item:
+                p = branching_dict.get(value["to_object"].__name__, {})
+                self.properties_of = p
+                return value["via_relation"], value["to_object"]
+
+            else:
+                raise ValueError(f"Branching key {key} is not a string or regex.")
 
 class All:
     """Gathers lists of subclasses of Element and their fields
