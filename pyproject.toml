@@ -14,7 +14,8 @@ numpy = "^2.2.4"
 owlready2 = "^0.48"
 jsonargparse = "^4.39"
 xdg-base-dirs = "^6.0.2"
-pandera = { version = "^0.25.0", extras = ["io"] }
+rapidfuzz = "^3.1.4"
+pandera = { version = "^0.26.1", extras = ["io"] }
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"

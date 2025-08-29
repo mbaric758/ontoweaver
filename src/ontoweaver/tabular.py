@@ -20,7 +20,7 @@ from . import transformer
 from . import exceptions
 from . import validate
 from . import make_labels
-
+from . import keyowrd_validator
 logger = logging.getLogger("ontoweaver")
 
 class MetaEnum(EnumMeta):
@@ -1095,6 +1095,10 @@ class YamlParser(Declare):
 
         logger.debug(f"Declare subject type...")
         subject_transformer_dict = self.get(self.k_row)
+
+        self.validate_subject_keywords(subject_transformer_dict)
+
+
         subject_transformer_class = list(subject_transformer_dict.keys())[0]
         subject_kwargs = self.get_not(self.k_subject_type + self.k_columns, subject_transformer_dict[
             subject_transformer_class])  # FIXME shows redundant information filter out the keys that are not needed.
@@ -1315,6 +1319,7 @@ class YamlParser(Declare):
         for transformer_index, target_transformer_yaml_dict in enumerate(transformers_list):
             for transformer_type, transformer_keyword_dict in target_transformer_yaml_dict.items():
 
+                self.validate_target_keywords(transformer_keyword_dict)
                 target_branching = False
 
                 elements = self._check_target_sanity(transformer_keyword_dict, transformer_type, transformer_index)
@@ -1416,6 +1421,13 @@ class YamlParser(Declare):
         self.k_validate_output = ["validate_output"]
         self.k_final_type = ["final_type", "final_object", "final_node", "final_subject", "final_label", "final_target"]
         self.k_reverse_edge = ["reverse_relation", "reverse_edge", "reverse_predicate"]
+        self.k_match = ["match"]
+
+        subject_keywords = self.k_row + self.k_subject_type + self.k_columns + self.k_final_type + self.k_validate_output + self.k_match
+        self.validate_subject_keywords = keyowrd_validator.KeywordResolver(subject_keywords)
+
+        target_keywords = self.k_target + self.k_edge + self.k_columns + self.k_final_type + self.k_validate_output + self.k_match + self.k_metadata + self.k_properties + self.k_prop_to_object
+        self.validate_target_keywords = keyowrd_validator.KeywordResolver(target_keywords)
 
         #TODO create make node class for nested final_type instantiation
 
