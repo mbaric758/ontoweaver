@@ -1094,10 +1094,10 @@ class YamlParser(Declare):
         """
 
         logger.debug(f"Declare subject type...")
+
+        self.validate_subject_keywords(dict([next(iter(self.config.items()))]))
+
         subject_transformer_dict = self.get(self.k_row)
-
-        self.validate_subject_keywords(subject_transformer_dict)
-
 
         subject_transformer_class = list(subject_transformer_dict.keys())[0]
         subject_kwargs = self.get_not(self.k_subject_type + self.k_columns, subject_transformer_dict[
@@ -1320,6 +1320,9 @@ class YamlParser(Declare):
             for transformer_type, transformer_keyword_dict in target_transformer_yaml_dict.items():
 
                 self.validate_target_keywords(transformer_keyword_dict)
+                    # raise self.error(f"Fix keyword in target transformer `{transformer_type}` at index `{transformer_index}`"
+                    #                    f" to continue.", "target", exception=exceptions.ConfigError)
+
                 target_branching = False
 
                 elements = self._check_target_sanity(transformer_keyword_dict, transformer_type, transformer_index)
@@ -1408,7 +1411,7 @@ class YamlParser(Declare):
 
         # Various keys are allowed in the config to allow the user to use their favorite ontology vocabulary.
         self.k_row = ["row", "entry", "line", "subject", "source"]
-        self.k_subject_type = ["to_subject", "to_object', 'to_node", "to_label", "to_type", "id_from_column"]
+        self.k_subject_type = ["to_subject", "to_object", "to_node", "to_label", "to_type", "id_from_column"]
         self.k_columns = ["columns", "fields", "column", "match_column", "id_from_column"]
         self.k_target = ["to_target", "to_object", "to_node", "to_label", "to_type"]
         self.k_subject = ["from_subject", "from_source", "to_subject", "to_source", "to_node", "to_label", "to_type"]
