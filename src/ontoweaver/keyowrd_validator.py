@@ -1,6 +1,7 @@
 import logging
 from . import errormanager
 from rapidfuzz import process
+import yaml
 
 logger = logging.getLogger("ontoweaver")
 
@@ -37,10 +38,10 @@ class KeywordResolver(errormanager.ErrorManager):
         match = process.extractOne(word, self.all_keywords, score_cutoff=min_score)
         if match:
             closest_alt, score, _ = match
-            logger.error(f"Invalid keyword '{word}'. Did you mean '{closest_alt}'?")
+            logger.error(f"Invalid keyword '{word}'. Did you mean '{closest_alt}'?") #FIXME: Should raise logger error, but how to solve transformer specific keywords?
+            return closest_alt
         else:
-            logger.error(f"Invalid keyword '{word}'. No close matches found.")
-        return None
+            logger.error(f"Invalid keyword '{word}'. No close matches found.") #FIXME: Should raise logger error, but how to solve transformer specific keywords?
 
     def _resolve_yaml(self, data, min_score: int = 70, in_match: bool = False):
         """Recursively validate keys in nested dict extracted from YAML.
@@ -50,7 +51,7 @@ class KeywordResolver(errormanager.ErrorManager):
         if isinstance(data, dict):
             # Recursively store the resulting dict in this structure, with the idea of then returning this to the user
             # as a suggested corrected version of their input.
-            resolved = {}
+            self.resolved = {}
             for key, value in data.items():
                 # If we're inside a match list, skip validation for the first-level keys.
                 if in_match:
@@ -60,31 +61,32 @@ class KeywordResolver(errormanager.ErrorManager):
 
                 # If this key is 'match', recurse with in_match=True
                 if resolved_key == "match" and isinstance(value, list):
-                    resolved[resolved_key] = self._resolve_yaml(value, min_score, in_match=True)
+                    self.resolved[resolved_key] = self._resolve_yaml(value, min_score, in_match=True)
                 else:
                     # Recurse normally — after skipping, we reset in_match=False.
                     if isinstance(value, (dict, list)):
-                        resolved[resolved_key] = self._resolve_yaml(value, min_score, in_match=False)
+                        self.resolved[resolved_key] = self._resolve_yaml(value, min_score, in_match=False)
                     else:
-                        resolved[resolved_key] = value
+                        self.resolved[resolved_key] = value
             # FIXME: Should not return resolved like this, but as logging? Or separate function.
-            return resolved
 
         elif isinstance(data, list):
             return [self._resolve_yaml(item, min_score, in_match=in_match) for item in data]
 
-        else:
-            return data # FIXME: Possibly should be true / false?
+    def __call__(self, yaml_dict, min_score: int = 70):
 
-    def __call__(self, words, min_score: int = 70):
+        if isinstance(yaml_dict, str):
+            self._resolve_one(yaml_dict, min_score)
 
-        if isinstance(words, str):
-            return self._resolve_one(words, min_score)
-
-        if isinstance(words, (dict, list)):
-            return self._resolve_yaml(words, min_score)
+        if isinstance(yaml_dict, (dict, list)):
+            self._resolve_yaml(yaml_dict, min_score)
 
         try:
-            return {w: self._resolve_one(w, min_score) for w in words}
+            {w: self._resolve_one(w, min_score) for w in yaml_dict}
         except TypeError:
-            raise ValueError("resolve() expected a string, iterable of strings, dict, or list")
+            raise logger.error("String, iterable of strings, dict, or list")
+
+
+    def write_suggested_yaml(self):
+
+        print(yaml.dump(self.resolved, sort_keys=False))
