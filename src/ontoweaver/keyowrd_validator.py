@@ -1,5 +1,7 @@
+import inspect
 import logging
 from . import errormanager
+from . import transformer
 from rapidfuzz import process
 import yaml
 
@@ -10,22 +12,22 @@ class KeywordResolver(errormanager.ErrorManager):
 
     def allow_keywords(self, new_keywords: list):
         """Add new keywords to the resolver."""
-        self.allowed_keywords.extend(new_keywords)
-        self.all_keywords = list(set(self.allowed_keywords))  # avoid duplicates
 
-    def __init__(self, allowed_keywords: list = None):
-        self.raise_errors = True
+        if new_keywords:
+            self.allowed_keywords.update(new_keywords)
+
+    def __init__(self, raise_errors: bool = True, allow_keywords: list = None):
+        self.raise_errors = raise_errors
+
+        self.allowed_keywords = set()
 
         # Allow some defaults such as transformers.
         # FIXME: This should also include the keywords specific to transformers, but filtering so that they are valid only for the correct transformer.
-        self.allowed_keywords = [
-            "rowIndex", "split", "cat", "map", "cat_format",
-            "translate", "string", "replace"
-        ]
+        self.allowed_keywords.update(name for name, obj in inspect.getmembers(transformer, inspect.isclass))
 
-        # Append new keywords if provided. Should be specific to the use case (target / subject parsing, etc.)
-        self.allow_keywords(allowed_keywords)
-        self.all_keywords = list(self.allowed_keywords)
+        self.allow_keywords(allow_keywords)
+
+        print(self.allowed_keywords)
         super().__init__(self.raise_errors)
 
 
@@ -35,7 +37,7 @@ class KeywordResolver(errormanager.ErrorManager):
         if word in self.allowed_keywords:
             return word
 
-        match = process.extractOne(word, self.all_keywords, score_cutoff=min_score)
+        match = process.extractOne(word, self.allowed_keywords, score_cutoff=min_score)
         if match:
             closest_alt, score, _ = match
             logger.error(f"Invalid keyword '{word}'. Did you mean '{closest_alt}'?") #FIXME: Should raise logger error, but how to solve transformer specific keywords?

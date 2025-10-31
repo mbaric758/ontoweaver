@@ -1426,13 +1426,13 @@ class YamlParser(Declare):
         self.k_reverse_edge = ["reverse_relation", "reverse_edge", "reverse_predicate"]
         self.k_match = ["match"]
 
-        subject_keywords = self.k_row + self.k_subject_type + self.k_columns + self.k_final_type + self.k_validate_output + self.k_match
-        self.validate_subject_keywords = keyowrd_validator.KeywordResolver(subject_keywords)
+        subject_keywords = (self.k_row + self.k_subject_type + self.k_columns + self.k_final_type + self.k_validate_output +
+                            self.k_match + self.k_reverse_edge)
+        self.validate_subject_keywords = keyowrd_validator.KeywordResolver(self.raise_errors, subject_keywords)
 
-        target_keywords = self.k_target + self.k_edge + self.k_columns + self.k_final_type + self.k_validate_output + self.k_match + self.k_metadata + self.k_properties + self.k_prop_to_object
-        self.validate_target_keywords = keyowrd_validator.KeywordResolver(target_keywords)
-
-        #TODO create make node class for nested final_type instantiation
+        target_keywords = (self.k_target + self.k_edge + self.k_columns + self.k_final_type + self.k_validate_output +
+                           self.k_match + self.k_metadata + self.k_properties + self.k_prop_to_object + self.k_reverse_edge)
+        self.validate_target_keywords = keyowrd_validator.KeywordResolver(self.raise_errors, target_keywords)
 
         # Extract transformer list and metadata list from the config.
         transformers_list = self.get(self.k_transformer)
