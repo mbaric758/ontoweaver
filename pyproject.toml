@@ -10,14 +10,21 @@ dev = [
 addopts = [
     "--import-mode=importlib",
 ]
-pythonpath = "src"
+pythonpath = ["src", "bin"]
 testpaths = [
     "tests",
 ]
 
-[tool.poetry.scripts]
-ontoweave = "bin.ontoweave:main"
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
 
+[project.scripts]
+ontoweave = "ontoweaver.ontoweave:main"
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["ontoweaver*", "bin*"]
 
 [project]
 authors = [
